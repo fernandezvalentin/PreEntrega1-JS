@@ -26,6 +26,27 @@ if (seleccion === "si") {
     (producto) => producto.nombre + " " + producto.precio + "$"
   );
   alert(todosLosProductos.join(" - "));
+
+  // Filtrar productos por precio máximo
+  let precioMaximo = parseInt(
+    prompt("¿Cuál es el precio máximo que está dispuesto a pagar?")
+  );
+  let productosFiltrados = productos.filter(
+    (producto) => producto.precio <= precioMaximo
+  );
+
+  // Mostrar los productos filtrados
+  if (productosFiltrados.length > 0) {
+    alert("Productos encontrados dentro del rango de precio:");
+    let productosFiltradosNombres = productosFiltrados.map(
+      (producto) => producto.nombre
+    );
+    alert(productosFiltradosNombres.join(", "));
+  } else {
+    alert(
+      "No se encontraron productos dentro del rango de precio especificado."
+    );
+  }
 } else if (seleccion === "no") {
   // Mensaje de despedida si el usuario no está interesado
   alert("Gracias por venir, hasta pronto.");
@@ -73,7 +94,45 @@ while (seleccion !== "no") {
 
     // Salir del bucle cuando la respuesta es "no"
     if (seleccion === "no") {
-      alert("Gracias por su compra, hasta pronto!");
+      // Mostrar detalles del carrito y calcular el total
+      carrito.forEach((carritoFinal) => {
+        console.log(
+          `Producto: ${carritoFinal.producto}, Unidades: ${
+            carritoFinal.unidades
+          }, Total a pagar por producto: ${
+            carritoFinal.unidades * carritoFinal.precio
+          }`
+        );
+      });
+
+      // Calcular el total general de la compra
+      const total = carrito.reduce(
+        (acc, el) => acc + el.precio * el.unidades,
+        0
+      );
+      console.log(`El total a pagar por su compra es: ${total} `);
+
+      // Preguntar al usuario por el método de pago
+      let metodoPago = prompt(
+        "Por favor, seleccione un método de pago (tarjeta, mercado pago, efectivo):"
+      );
+
+      // Validar el método de pago seleccionado
+      while (
+        metodoPago !== "tarjeta" &&
+        metodoPago !== "mercado pago" &&
+        metodoPago !== "efectivo"
+      ) {
+        alert("Por favor, seleccione un método de pago válido.");
+        metodoPago = prompt(
+          "Por favor, seleccione un método de pago (tarjeta, mercado pago, efectivo):"
+        );
+      }
+
+      // Mostrar mensaje de confirmación con el método de pago seleccionado
+      alert(`Ha seleccionado pagar con ${metodoPago}. Gracias por su compra.`);
+      console.log(`Método de pago seleccionado: ${metodoPago}`);
+
       break;
     }
   } else {
@@ -81,18 +140,3 @@ while (seleccion !== "no") {
     alert("No tenemos el producto indicado.");
   }
 }
-
-// Mostrar detalles del carrito y calcular el total
-carrito.forEach((carritoFinal) => {
-  console.log(
-    `Producto: ${carritoFinal.producto}, Unidades: ${
-      carritoFinal.unidades
-    }, Total a pagar por producto: ${
-      carritoFinal.unidades * carritoFinal.precio
-    }`
-  );
-});
-
-// Calcular el total general de la compra
-const total = carrito.reduce((acc, el) => acc + el.precio * el.unidades, 0);
-console.log(`El total a pagar por su compra es: ${total} `);
