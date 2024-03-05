@@ -3,31 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>El Galpón</title>
-    <link rel="stylesheet" href="">
-    
+    <title></title>
+    <link rel="stylesheet" href="./assets/style.css" />
   </head>
 
   <body>
-
-    <header>
-
-      
-        <div class="titulo-store">
-          <h1>El Galpón</h1>
-        </div>
-
-        <nav>
-          <ul>
-            <li><a href="./index.html"> Inicio </a></li>
-            <li><a href="./views/billabong.html"> Billabong </a></li>
-            <li><a href="./views/ripcurl.html"> Rip Curl </a></li>
-            <li><a href="./views/volcom.html"> Volcom </a></li>
-          </ul>
+    <header class="header-title">
+      <div class="nav-container">
+        <nav class="navbar">
+          <h1 class="navbar-logo"></h1>
+          <h1 class="ver-carrito" id="verCarrito">
+            🛒<span id="cantidadCarrito" class="cantidadCarrito"></span>
+          </h1>
         </nav>
+      </div>
+
+      <div class="banner">
+        <div class="banner-container"></div>
+        <h1>El Galpón</h1>
       </div>
     </header>
 
-    <script src="./index.js"></script>
+    <!--Shop Content-->
+    <div id="shopContent" class="shop-content"></div>
+
+    <!--Modal container-->
+    <div id="modal-container" class="modal-container"></div>
+
+    <script src="./js/app.js"></script>
+    <script src="./js/carrito.js"></script>
+    <script src="./js/index.js"></script>
+    <script src="./js/productos.js"></script>
   </body>
 </html>

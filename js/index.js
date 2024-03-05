@@ -1,9 +1,9 @@
-// Definición de la lista de productos con nombre y precio
+/* // Definición de la lista de productos con nombre y precio
 const productos = [
-  { nombre: "remera volcom", precio: 21500 },
-  { nombre: "remera billabong", precio: 22500 },
-  { nombre: "remera rip curl", precio: 23500 },
-  { nombre: "remera dc", precio: 24500 },
+  { id: 1, nombre: "remera volcom", precio: 21500 },
+  { id: 2, nombre: "remera billabong", precio: 22500 },
+  { id: 3, nombre: "remera rip curl", precio: 23500 },
+  { id: 4, nombre: "remera thrasher", precio: 24500 },
 ];
 
 // Inicialización del carrito como un array vacío
@@ -63,7 +63,7 @@ while (seleccion !== "no") {
     producto == "remera volcom" ||
     producto == "remera billabong" ||
     producto == "remera rip curl" ||
-    producto == "remera dc"
+    producto == "remera thrasher"
   ) {
     // Asignar el precio según el producto seleccionado
     switch (producto) {
@@ -76,7 +76,7 @@ while (seleccion !== "no") {
       case "remera rip curl":
         precio = 23500;
         break;
-      case "remera dc":
+      case "remera thrasher":
         precio = 24500;
         break;
       default:
@@ -140,3 +140,4 @@ while (seleccion !== "no") {
     alert("No tenemos el producto indicado.");
   }
 }
+ */
