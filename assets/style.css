@@ -200,3 +200,20 @@ body {
 .restar {
   cursor: pointer;
 }
+
+.finalizar-compra-button {
+  border: 5px solid #000000;
+  color: #000000;
+  background-color: gray;
+  padding: 15px 25px;
+  font-size: 20px;
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 20px;
+}
+
+.finalizar-compra-button:hover {
+  background-color: #ffffff;
+  color: #000000;
+}

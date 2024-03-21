@@ -74,8 +74,22 @@ const pintarCarrito = () => {
 
   const totalBuying = document.createElement("div");
   totalBuying.className = "total-content";
-  totalBuying.innerHTML = `Total a pagar: $ ${total} `;
+  totalBuying.innerHTML = `Total a pagar: $${total.toLocaleString("es-ES")}`;
   modalContainer.append(totalBuying);
+
+  // Botón "Finalizar compra"
+  const finalizarCompraButton = document.createElement("button");
+  finalizarCompraButton.innerText = "Finalizar compra";
+  finalizarCompraButton.className = "finalizar-compra-button";
+  finalizarCompraButton.addEventListener("click", () => {
+    mostrarNotificacion("Compra finalizada", "info");
+  });
+  modalContainer.append(finalizarCompraButton);
+
+  // Verificar si el carrito está vacío y ocultar el contenedor del carrito
+  if (carrito.length === 0) {
+    modalContainer.style.display = "none";
+  }
 };
 
 verCarrito.addEventListener("click", pintarCarrito);
@@ -89,9 +103,10 @@ const eliminarProducto = (id) => {
     saveLocal();
     pintarCarrito();
 
-    // Mostrar notificación al cerrar el carrito por completo
+    // Verificar si el carrito está vacío y ocultar el contenedor del carrito
     if (carrito.length === 0) {
-      mostrarNotificacion("Carrito vacio", "info");
+      modalContainer.style.display = "none";
+      mostrarNotificacion("Carrito vacío", "info");
     }
   }
 };
