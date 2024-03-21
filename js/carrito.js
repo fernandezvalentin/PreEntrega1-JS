@@ -1,3 +1,14 @@
+// Función para mostrar una notificación con Toastify
+const mostrarNotificacion = (mensaje, tipo) => {
+  Toastify({
+    text: mensaje,
+    duration: 3000,
+    gravity: "bottom",
+    position: "right",
+    backgroundColor: tipo === "error" ? "#ff3333" : "#32CD32",
+  }).showToast();
+};
+
 const pintarCarrito = () => {
   modalContainer.innerHTML = "";
   modalContainer.style.display = "flex";
@@ -8,7 +19,7 @@ const pintarCarrito = () => {
   modalContainer.append(modalHeader);
 
   const modalbutton = document.createElement("h1");
-  modalbutton.innerHTML = "x";
+  modalbutton.innerHTML = "❌";
   modalbutton.className = "modal-header-button";
 
   modalbutton.addEventListener("click", () => {
@@ -54,38 +65,35 @@ const pintarCarrito = () => {
 
     eliminar.addEventListener("click", () => {
       eliminarProducto(product.id);
+      // Mostrar notificación al eliminar un producto del carrito
+      mostrarNotificacion("Producto eliminado del carrito", "success");
     });
-
-    console.log(carrito.length);
-
-    //  let eliminar = document.createElement("span");
-
-    // eliminar.innerText = "❌";
-    // eliminar.className = "delete-product";
-    // carritoContent.append(eliminar);
-
-    // eliminar.addEventListener("click", eliminarProducto);
   });
 
   const total = carrito.reduce((acc, el) => acc + el.precio * el.cantidad, 0);
 
   const totalBuying = document.createElement("div");
   totalBuying.className = "total-content";
-  totalBuying.innerHTML = `Total a pagar: ${total} $`;
+  totalBuying.innerHTML = `Total a pagar: $ ${total} `;
   modalContainer.append(totalBuying);
 };
 
 verCarrito.addEventListener("click", pintarCarrito);
 
 const eliminarProducto = (id) => {
-  const foundId = carrito.find((element) => element.id === id);
+  const foundId = carrito.findIndex((element) => element.id === id);
 
-  carrito = carrito.filter((carritoId) => {
-    return carritoId !== foundId;
-  });
-  carritoCounter();
-  saveLocal();
-  pintarCarrito();
+  if (foundId !== -1) {
+    carrito.splice(foundId, 1);
+    carritoCounter();
+    saveLocal();
+    pintarCarrito();
+
+    // Mostrar notificación al cerrar el carrito por completo
+    if (carrito.length === 0) {
+      mostrarNotificacion("Carrito vacio", "info");
+    }
+  }
 };
 
 const carritoCounter = () => {

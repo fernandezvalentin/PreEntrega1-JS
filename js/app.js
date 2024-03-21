@@ -14,10 +14,10 @@ const getProducts = async () => {
     let content = document.createElement("div");
     content.className = "card";
     content.innerHTML = `
-      <img src= "${product.img}">
-      <h3>${product.nombre}</h3>
-      <p class="price">${product.precio} $</p>
-      `;
+          <img src= "${product.img}">
+          <h3>${product.nombre}</h3>
+          <p class="price">$ ${product.precio.toLocaleString("es-ES")}</p>
+          `;
 
     shopContent.append(content);
 
@@ -50,11 +50,35 @@ const getProducts = async () => {
       console.log(carrito);
       carritoCounter();
       saveLocal();
+
+      // Mostrar alerta de éxito si se agregó el producto al carrito
+      mostrarAlertaExito();
     });
   });
 };
 
 getProducts();
+
+// Función para mostrar una alerta de éxito
+const mostrarAlertaExito = () => {
+  Swal.fire({
+    icon: "success",
+    title: "Éxito",
+    text: "El producto ha sido añadido al carrito",
+    timer: 1300,
+    timerProgressBar: true,
+    showConfirmButton: false,
+  });
+};
+
+// Función para mostrar una alerta de error
+const mostrarAlertaError = () => {
+  Swal.fire({
+    icon: "error",
+    title: "Error",
+    text: "No se pudo añadir el producto al carrito",
+  });
+};
 
 //Local Storage
 const saveLocal = () => {
@@ -62,5 +86,4 @@ const saveLocal = () => {
 };
 
 // Get Item
-
 JSON.parse(localStorage.getItem("carrito"));

@@ -4,8 +4,17 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
     <link rel="stylesheet" href="./assets/style.css" />
-    <title>Market Sop</title>
+    <title>El Galpón</title>
   </head>
   <body>
     <!--navBar-->
@@ -21,17 +30,21 @@
     <!--banner-->
     <div class="banner">
       <div class="banner-container">
-        <h1>El Galpon</h1>
+        <h1>El Galpón</h1>
         <p></p>
       </div>
     </div>
 
-    <!--shop content-->
     <div id="shopContent" class="shop-content"></div>
-
-    <!--modal container-->
+    <button id="verCarrito"></button>
     <div id="modal-container" class="modal-container"></div>
+    <div id="cantidadCarrito"></div>
 
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./js/app.js"></script>
     <script src="./js/carrito.js"></script>
   </body>
