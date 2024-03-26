@@ -46,7 +46,7 @@ const pintarCarrito = () => {
 
     let restar = carritoContent.querySelector(".restar");
 
-    restar.addEventListener("click", () => {
+    restar.addEventListener("click", () => { // vas a ver como esto de agregar listeners, por ejemplo este que se queda escuchando un click, en react es una boludez pero es importante que aprendas como hacerlo con javascript nativo
       if (product.cantidad !== 1) {
         product.cantidad--;
         saveLocal();
@@ -92,7 +92,7 @@ const pintarCarrito = () => {
   }
 };
 
-verCarrito.addEventListener("click", pintarCarrito);
+verCarrito.addEventListener("click", pintarCarrito); // esto te anda de pedo porque en el index.html agregaste el script de este archivo despues que el de app.js, si lo intercambias de lugar te vas a dar cuenta que no funciona, porque? porque la variable verCarrito, la create en app.js. move la linea 2 de app.js y ponela aca, fijate que verCarrito no lo usas en app.js
 
 const eliminarProducto = (id) => {
   const foundId = carrito.findIndex((element) => element.id === id);
